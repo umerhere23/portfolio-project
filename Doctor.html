@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sarah Johnson - Cardiology | Healthcare Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="drstyle.css">
+    <style>
+         :root {
+            --primary: #0d6efd;
+            --secondary: #6c757d;
+            --success: #198754;
+            --info: #0dcaf0;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --hospital-blue: #0066cc;
+            --hospital-green: #009688;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--hospital-blue);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--hospital-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--hospital-blue);
+            color: var(--hospital-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--hospital-blue);
+            color: white;
+        }
+        
+        /* Header Styles (same as homepage) */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text h1 {
+            color: var(--hospital-blue);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            color: var(--secondary);
+            font-size: 12px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--hospital-blue);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .active a:after {
+            width: 100%;
+        }
+        
+        /* Doctor Profile Hero */
+        .doctor-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .doctor-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .doctor-hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .doctor-hero p.specialty {
+            font-size: 24px;
+            color: var(--hospital-green);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .doctor-hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Doctor Profile Content */
+        .doctor-profile {
+            padding: 80px 0;
+        }
+        
+        .profile-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .doctor-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .doctor-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: var(--hospital-blue);
+        }
+        
+        .doctor-info p {
+            color: var(--hospital-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .doctor-contact {
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--hospital-blue);
+        }
+        
+        .doctor-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+        
+        .doctor-social a {
+            color: var(--secondary);
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        
+        .doctor-social a:hover {
+            color: var(--hospital-blue);
+        }
+        
+        .doctor-main {
+            flex: 1;
+        }
+        
+        .profile-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .profile-section h2 {
+            font-size: 28px;
+            color: var(--hospital-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .profile-section h3 {
+            font-size: 22px;
+            color: var(--hospital-blue);
+            margin: 25px 0 15px;
+        }
+        
+        .profile-section p {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .education-item:last-child, .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .education-item h4, .experience-item h4 {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .education-item p, .experience-item p {
+            color: var(--hospital-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .availability-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .availability-table th, .availability-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .availability-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .availability-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .available {
+            color: var(--success);
+            font-weight: 600;
+        }
+        
+        .unavailable {
+            color: var(--danger);
+        }
+        
+        /* Footer (same as homepage) */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--hospital-blue);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            list-style: none;
+            color: #bbb;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--hospital-blue);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .doctor-sidebar {
+                width: 100%;
+            }
+            
+            .doctor-hero h1 {
+                font-size: 36px;
+            }
+            
+            .doctor-hero p.specialty {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .doctor-hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://img.icons8.com/color/48/000000/hospital-3.png" alt="Healthcare Hospital Logo">
+                <div class="logo-text">
+                    <h1>Healthcare Hospital</h1>
+                    <p>Compassionate Care, Advanced Medicine</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li class="active"><a href="doctors.html">Doctors</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Doctor Hero -->
+    <section class="doctor-hero">
+        <div class="container">
+            <div class="doctor-hero-content">
+                <h1>Dr. Sarah Johnson</h1>
+                <p class="specialty">Cardiologist</p>
+                <p>Board-certified cardiologist with over 15 years of experience in diagnosing and treating heart conditions. Specializes in interventional cardiology and preventive heart care.</p>
+                <div class="doctor-hero-buttons">
+                    <a href="#appointment" class="btn btn-primary">Book an Appointment</a>
+                    <a href="#contact" class="btn btn-outline">Contact Doctor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Profile Content -->
+    <section class="doctor-profile">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Doctor Sidebar -->
+                <div class="doctor-sidebar">
+                    <div class="doctor-card">
+                        <div class="doctor-img">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Sarah Johnson">
+                        </div>
+                        <div class="doctor-info">
+                            <h3>Dr. Sarah Johnson</h3>
+                            <p>Cardiologist</p>
+                            <div class="doctor-contact">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p>+1 (555) 987-6543</p>
+                                        <small>Office</small>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p>s.johnson@healthcarehospital.com</p>
+                                        <small>Email</small>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p>Cardiology Department, 3rd Floor</p>
+                                        <small>Location</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-researchgate"></i></a>
+                            <a href="#"><i class="fas fa-graduation-cap"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h2>Quick Facts</h2>
+                        <ul style="list-style-type: none;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <strong>Specialty:</strong> Cardiology
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <strong>Experience:</strong> 15+ years
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <strong>Education:</strong> MD, Harvard Medical School
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <strong>Languages:</strong> English, Spanish
+                            </li>
+                            <li style="padding: 8px 0;">
+                                <strong>Board Certified:</strong> Yes
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Doctor Main Content -->
+                <div class="doctor-main">
+                    <div class="profile-section">
+                        <h2>About Dr. Johnson</h2>
+                        <p>Dr. Sarah Johnson is a highly skilled cardiologist with extensive experience in diagnosing and treating a wide range of cardiovascular conditions. She completed her residency at Massachusetts General Hospital and fellowship in Interventional Cardiology at Johns Hopkins Hospital.</p>
+                        <p>Dr. Johnson is passionate about preventive cardiology and believes in a patient-centered approach to care. She takes the time to listen to her patients and develop personalized treatment plans that address their unique needs and concerns.</p>
+                        
+                        <h3>Specializations</h3>
+                        <ul style="columns: 2; list-style-type: none;">
+                            <li style="padding: 5px 0;"><i class="fas fa-check-circle" style="color: var(--hospital-green); margin-right: 8px;"></i> Coronary Artery Disease</li>
+                            <li style="padding: 5px 0;"><i class="fas fa-check-circle" style="color: var(--hospital-green); margin-right: 8px;"></i> Heart Failure</li>
+                            <li style="padding: 5px 0;"><i class="fas fa-check-circle" style="color: var(--hospital-green); margin-right: 8px;"></i> Arrhythmias</li>
+                            <li style="padding: 5px 0;"><i class="fas fa-check-circle" style="color: var(--hospital-green); margin-right: 8px;"></i> Valvular Heart Disease</li>
+                            <li style="padding: 5px 0;"><i class="fas fa-check-circle" style="color: var(--hospital-green); margin-right: 8px;"></i> Preventive Cardiology</li>
+                            <li style="padding: 5px 0;"><i class="fas fa-check-circle" style="color: var(--hospital-green); margin-right: 8px;"></i> Cardiac Catheterization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="profile-section" id="experience">
+                        <h2>Education & Experience</h2>
+                        
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <h4>Doctor of Medicine (MD)</h4>
+                            <p>Harvard Medical School, 2002-2006</p>
+                        </div>
+                        <div class="education-item">
+                            <h4>Bachelor of Science in Biology</h4>
+                            <p>Stanford University, 1998-2002</p>
+                        </div>
+                        
+                        <h3>Professional Experience</h3>
+                        <div class="experience-item">
+                            <h4>Senior Cardiologist</h4>
+                            <p>Healthcare Hospital, 2014-Present</p>
+                            <p>Lead interventional cardiologist and director of the Cardiac Catheterization Lab.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h4>Cardiologist</h4>
+                            <p>Boston Heart Center, 2010-2014</p>
+                        </div>
+                        <div class="experience-item">
+                            <h4>Cardiology Fellow</h4>
+                            <p>Johns Hopkins Hospital, 2007-2010</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section" id="availability">
+                        <h2>Availability</h2>
+                        <p>Dr. Johnson is available for consultations and procedures at the following times. Please note that emergency cases may affect schedule availability.</p>
+                        
+                        <table class="availability-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Morning</th>
+                                    <th>Afternoon</th>
+                                    <th>Evening</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td class="available">9:00 AM - 12:00 PM</td>
+                                    <td class="available">2:00 PM - 5:00 PM</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td class="unavailable">Procedures</td>
+                                    <td class="available">1:00 PM - 6:00 PM</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td class="available">8:00 AM - 12:00 PM</td>
+                                    <td class="unavailable">Research</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td class="available">9:00 AM - 12:00 PM</td>
+                                    <td class="available">2:00 PM - 5:00 PM</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td class="available">8:00 AM - 11:00 AM</td>
+                                    <td class="unavailable">Procedures</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td class="unavailable">Unavailable</td>
+                                    <td class="unavailable">Unavailable</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td class="unavailable">Unavailable</td>
+                                    <td class="unavailable">Unavailable</td>
+                                    <td class="unavailable">Unavailable</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="profile-section" id="appointment">
+                        <h2>Book an Appointment</h2>
+                        <form style="margin-top: 20px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                <div>
+                                    <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600;">Full Name</label>
+                                    <input type="text" id="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                </div>
+                                <div>
+                                    <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600;">Email Address</label>
+                                    <input type="email" id="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                <div>
+                                    <label for="phone" style="display: block; margin-bottom: 8px; font-weight: 600;">Phone Number</label>
+                                    <input type="tel" id="phone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                </div>
+                                <div>
+                                    <label for="date" style="display: block; margin-bottom: 8px; font-weight: 600;">Preferred Date</label>
+                                    <input type="date" id="date" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <label for="reason" style="display: block; margin-bottom: 8px; font-weight: 600;">Reason for Visit</label>
+                                <textarea id="reason" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Request Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Healthcare Hospital is a leading medical institution committed to providing exceptional healthcare services with compassion and innovation.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="departments.html">Departments</a></li>
+                        <li><a href="doctors.html">Doctors</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Departments</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Cardiology</a></li>
+                        <li><a href="#">Neurology</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Radiology</a></li>
+                        <li><a href="#">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Medical Center Drive, Boston, MA 02115, USA</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@healthcarehospital.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Open 24/7 for emergency services</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Healthcare Hospital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
