@@ -10,13 +10,13 @@
    --hospital-blue: #0066cc;
    --hospital-green: #009688;
 }
-
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 body {
    background-color: #f5f9ff;
